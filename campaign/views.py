@@ -9,7 +9,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def form(request):
-    CampaignFormSet=modelformset_factory(Campaign, fields=('name','duration'),extra=1)
+    CampaignFormSet=modelformset_factory(Campaign, fields=('name','duration','category','areas','status','picture '),extra=1)
     if request.method =='POST':
         form=CampaignFormSet(request.POST)
         instances = form.save()		
