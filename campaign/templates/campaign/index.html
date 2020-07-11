@@ -1,0 +1,189 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300&family=Righteous&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>      
+        <header>
+          <a href="index.html">
+            <div id="logo"></div>
+         </a>
+          <ul>
+                <li>
+                    <a href="#">
+                    <img src="static/images/Liat.png" alt="Liat Cohen"> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    <img src="static/images/bell.png" alt="Notifications"> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    <img src="static/images/mail.png" alt="messages"> 
+                    </a> 
+                </li>
+                <li>
+                    <a href="index.html">
+                    <img src="static/images/home.png" alt="Home page">
+                    </a>
+                </li>  
+                </ul>
+
+                <nav class="sidenav">
+                  <ul>
+                      <li><a href="{% url 'files' %}"><img src="static/images/plus1.png" alt=""></a></li>
+                      <li><a href="page2.html"><img src="static/images/album1.png" alt=""></a></li>
+                      <li><a href="#"><img src="static/images/graphic.png" alt=""></a></li>
+                      <li><a href="#"><img src="static/images/cog.png" alt=""></a></li>
+                      <li><a href="#"><img src="static/images/logout.png" alt=""></a></li>
+  
+                  </ul>
+                  
+                </nav>
+
+        </header>
+        
+        <main >
+            <div id="layout-wrapper">
+               <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12" >
+                        <div id="user">
+                            <a href="#"><img src="static/images/liat.png" alt=""></a>
+                            <h4><b>Liat cohen</b></h4>
+                            <h5>Customer and Content Manager</h5>
+                            <h5>McCann</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12" >
+                        <div class="creationCamp">
+                          <h4 class="title_button"><b>Creation process campaigns</b></h4>
+                          <a href="/page2.html"> <span class="glyphicon glyphicon-option-horizontal" ></span></a>
+                        <div style="overflow-x:auto;">
+                            <table class="table">
+                                <thead class="thead-light">
+                                  <tr>
+                                    <th scope="col">Company name</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Duration</th>
+                                    <th scope="col">Region</th>
+                                    <th scope="col">Progress</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row"><img src="static/images/subway2.png" alt=""></th>
+                                    <td>Food</td>
+                                    <td>2 weeks</td>
+                                    <td>Tel Aviv</td>
+                                    <td>29%</td>
+                                </tr>
+                                  <tr>
+                                    <th scope="row"><img src="static/images/CK.png" alt=""></th>
+                                    <td>Fashion</td>
+                                    <td>3 weeks</td>
+                                    <td>Tel Aviv</td>
+                                    <td>89%</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div> 
+                            </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12 ">
+                        <article class="messages">
+                          <h4 class="title_button"><b>Messages</b></h4>
+                          <a href="#"> <span class="glyphicon glyphicon-option-horizontal" ></span></a>
+
+                            <nav>
+                                <img src="static/images/bell.png" alt="">
+                                <p>"Taste the feeling" campaign for Coca Cola was approved and started broadcasting.</p>
+                            </nav>
+                            <nav>
+                                <img src="static/images/mail.png" alt="">
+                                <p>Mail from Roger Jackson in inbox.</p>
+                            </nav>
+                        </article>
+                    </div>
+                  </div>
+              </div> 
+              <br>
+              <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12" >
+                      <div class="runnigCamp">
+                           <h4 class="title_button"><b>My running campaign status</b></h4>
+                            <a href="/page2.html"> <span class="glyphicon glyphicon-option-horizontal" ></span></a>
+                            <ul >
+                               {% for camp in campaign_list %} 
+                               <li>
+                            
+                                  <h5>{{camp.name}}</h5>
+                                        
+                                </li>
+                                <li>
+                                      
+                            </ul>
+                            {% endfor %}
+                            
+                         
+                     
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <article class="stats">
+                        <h4><b>Recent stats</b></h4>
+                        <img src="static/images/comingSoon.png" alt="">
+                    </article></div>
+                  </div>
+              </div> 
+         
+  
+              <footer>
+                <div class="card-group">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><b>Contact Us</b></h5>
+                        <p class="card-text">03-5741111 <br>onway@gmail.com</p>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><b>Help</b></h5>
+                        <p class="card-text">Site Usage Guidelines<br>Terms<br>Technical assistance</p>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><b>Info</b></h5>
+                        <p class="card-text">Useful information<br>Map of available vehicles<br>Sample campaigns</p>
+                      </div>
+                    </div>
+                  </div>
+                </footer>
+        </div> 
+    </main>
+
+    <script src="includes/main.JS"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"  
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" 
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html> -->

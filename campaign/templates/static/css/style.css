@@ -1,0 +1,382 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    height:100%;
+    width: 100%;
+}
+body {
+    font-size: 100%;
+    align-items: center;
+	background-color: #E5E5E5;
+}
+#layout-wrapper {
+   min-height: 100%;
+    width: 90%;
+    margin: 0px auto;
+}
+main {
+    width: 90%;
+    height: 90%;
+    float: left;
+    margin-left:10%;
+}
+header {
+    width:100%;
+    background-color:white;
+    height: 10vh;
+}
+ul {
+    list-style-type:none;
+}
+header ul li {
+    float: right;
+    margin-right: 10px;
+}
+header img {
+    height: 40px;
+    width: 40px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+#logo {
+    background-image: url("../images/logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50px;
+    width: 60px;
+    clear: both;
+    margin-top: 5px;
+    margin-left: 10px;
+    float: left;
+}
+.menuLeft {
+    float: left; 
+}
+header ul, a
+{
+  margin: 0px;
+  padding: 0px;
+}
+div[class*=col-] {
+    background-color:white;
+    padding: 5px;
+    background-clip: content-box, padding-box;
+    box-shadow:  #E5E5E5;
+}
+
+main h3 {
+    text-align: center;
+}
+.glyphicon {
+    font-size:25px;
+    float: right;
+    margin-right: 20px;
+}
+.title_button{
+    display: inline;
+}
+.sidenav {
+    height: 300px;
+    width: 100px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    opacity: 0.7;
+    border-radius: 10px;
+    overflow-x: hidden;
+    margin-top: 70px;
+  }
+  .sidenav ul {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-around
+  }
+  .sidenav img {
+    display: block;
+    height: 30px;
+    width: 30px;
+  }
+  .sidenav li {
+      margin: 0 auto;
+  }
+  .video img{
+    height: 100%; 
+    width: 100%;
+  }
+  @media screen and (max-width: 600px) {
+    .sidenav {width: 100px; margin-right: 15px; background-color:rgba(146, 145, 145, 0);}
+    header img {height: 20px; width: 20px;}
+    #logo {height: 45px; width: 50px;}
+  }
+#user {
+    text-align: center;
+    padding-top: 40px;
+    font-family: 'Advent Pro', sans-serif;}
+
+#user h5,h4 {
+    margin-top:10px;
+}
+
+#user img {
+    height: 60%;
+    width:60%;
+}
+.rows {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+ul h6 {
+    font-family: 'Staatliches', cursive;
+}
+.creationCamp {
+    text-align: center;
+    padding-top: 20px;
+}
+.creationCamp img {
+    height: 100px;
+    width: 100px;
+}
+.table {
+    margin-top: 20px;
+}
+.table img {
+    width: 70px;
+    height: 70px;
+}
+.runnigCamp {
+    background-color:white;
+    text-align: center;
+    top:520px;
+    padding-top: 20px;
+}
+.runnigCamp nav {
+    float: left;
+    padding-left: 20px;
+}
+.messages {
+
+    text-align: center;
+    padding-top: 20px;
+
+}
+.messages img {
+    float: left;
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+}
+.messages p {
+    margin-top: 30px;
+
+}
+ .stats {
+    text-align: center;
+    padding-top: 20px;
+}
+a { color: inherit; } 
+a:hover 
+{ 
+     text-decoration:none; 
+     cursor:pointer; 
+     color: gray;
+     opacity: 0.4;
+}
+.stats img {
+    height: 200px;
+    width: 200px;
+    background-color: white;
+}
+footer {
+    text-align: center;
+    width: 100%;
+    margin-top: 70px;
+}
+footer div {
+    background-color: rgb(236, 236, 236);
+    border-style: none;
+    
+}
+.runnigCamp  li{
+    display: inline-block;
+    clear: both;
+    padding: 10px;
+    border-radius: 30px;
+    margin-bottom: 2px;
+}
+.runnigCamp ul {
+    width: 100%;
+    overflow: auto;
+    white-space:nowrap;  
+    margin-bottom: 10px;
+}
+.container-fluid{
+   height: 50%; 
+}
+.container li{
+    display: inline-block;
+    clear: both;
+    padding: 10px;
+    border-radius: 30px;
+    margin-bottom: 2px;
+}
+.container ul {
+    width: 100%;
+    overflow: auto;
+    white-space:nowrap;  
+    margin-bottom: 10px;
+}
+  
+.container .row { margin-top: 20px;
+    width: 100%;
+    background-color: white;
+}
+.title{
+    width: 100%;
+}
+
+.row h4 {
+    text-align: center;
+}
+
+.row ul {
+    margin: 0 auto;
+    text-align: center;
+}
+.video {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+.center .btn {
+    background-color: rgb(146, 145, 145); 
+    border: none; 
+    color: white; 
+    padding: 12px 16px; 
+    font-size: 30px;
+    cursor: pointer; 
+    margin: 0 auto;
+  }
+  
+ .center .btn:hover {
+    background-color: gray;
+  }
+.center{
+    margin: 0 auto;
+    text-align: center;
+ }
+
+  /*page4*/
+  
+  h1 {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 75px;
+}
+
+button  {
+    float: right;
+}
+
+.input-container {
+    width: fit-content;
+}
+
+label {
+    text-align: start;
+}
+
+.wrapper {
+    width: 750px;
+    text-align: center;
+    margin: auto;
+}
+@media  screen and (max-width: 800px ) and (min-width: 351px) {
+    .wrapper {
+     width: 350px;
+    }
+    .steps div {
+        margin: 5px;
+        padding: 25px !important;
+    }
+  }
+  @media  screen and (max-width: 350px) {
+    .wrapper {
+     width: 100%;
+     margin: 3px
+    }
+    .steps div {
+        margin: 5px;
+        padding: 0px !important;
+    }
+  }
+.steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+.steps div {
+    cursor: pointer;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #363636;
+}
+.next-step {
+    min-height: 75px;
+    padding: 10px;
+}
+.step__title {
+    padding: 8px;
+    background-color: #ffffff;
+    text-align: start;
+    color: #363636;
+}
+.step__title h4 {
+    display: inline-block;
+    margin-left: 15px;
+}
+.general-settings__step {
+    color: #363636;
+    padding: 15px;
+    background-color: #ffffff;
+    margin-top: 10px;
+}
+.general-settings__step-select {
+    display: flex;
+    text-align: start;
+    flex-direction: column;
+    width: fit-content;
+    margin-bottom: 1rem;
+}
+
+.form-group__size {
+    text-align: start;
+    width: fit-content;
+}
+
+.file-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.active-step{
+    background-color: lightgreen !important ;
+    color: white !important;
+}
+
+#advertiseFilesContainer {
+    background-color: #ffffff;
+    color: #363636;
+}
+
+#advertiseFilesForm > div {
+    color: #363636;
+    padding: 30px;
+}
