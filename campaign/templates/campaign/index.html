@@ -45,7 +45,7 @@
 
                 <nav class="sidenav">
                   <ul>
-                      <li><a href="{% url 'files' %}"><img src="static/images/plus1.png" alt=""></a></li>
+                      <li><a href="{% url 'form' %}"><img src="static/images/plus1.png" alt=""></a></li>
                       <li><a href="page2.html"><img src="static/images/album1.png" alt=""></a></li>
                       <li><a href="#"><img src="static/images/graphic.png" alt=""></a></li>
                       <li><a href="#"><img src="static/images/cog.png" alt=""></a></li>
@@ -131,7 +131,7 @@
                             <ul >
                                {% for camp in campaign_list %} 
                                <li>
-                            
+                                 <img src="{{camp.picture.url}}">
                                   <h5>{{camp.name}}</h5>
                                         
                                 </li>
