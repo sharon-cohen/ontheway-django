@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+          <div id="logo"></div>
+       </a>
+        <ul>
+
+              <li>
+                  <a href="#">
+                  <img src="static/images/liat.png" alt="Liat Cohen"> 
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                  <img src="static/images/bell.png" alt="Notifications"> 
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                  <img src="static/images/mail.png" alt="messages"> 
+                  </a> 
+              </li>
+              <li>
+                  <a href="index.html">
+                  <img src="static/images/homeG.png" alt="Home page">
+                  </a>
+              </li>  
+              </ul>
+              
+
+              <nav class="sidenav">
+                <ul>
+                    <li><a href="page4.html"><img src="static/images/plus1.png" alt=""></a></li>
+                    <li><a href="page2.html"><img src="static/images/album2.png" alt=""></a></li>
+                    <li><a href="#"><img src="static/images/graphic.png" alt=""></a></li>
+                    <li><a href="#"><img src="static/images/cog.png" alt=""></a></li>
+                    <li><a href="#"><img src="static/images/logout.png" alt=""></a></li>
+
+                </ul>
+                
+            </nav>
+      </header>  
+    <main>
+        <div id="layout-wrapper">  
+        <h3><b>My campaigns</b></h3>
+        <div class="container">
+            <div class="row">
+                <div class="title"><h4><b>Waiting for approval</b></h4></div>
+                <ul>
+                    {% for camp in campaign_list %} 
+                    {%if camp.status == 'Waiting' %}
+                    <li>
+                      <img src="{{camp.picture.url}}">
+                       <h5>{{camp.name}}</h5>
+                             
+                     </li>
+                     <li>
+
+                <li>
+                   {%endif%}
+                   {%endfor%}     
+                   </ul>
+                  
+            </div>
+        
+  
+            <div class="row">
+               <div class="title"><h4><b>Creation process campaigns</b></h4>
+               </div> 
+               <ul>
+                {% for camp in campaign_list %} 
+                {%if camp.status == 'process' %}
+                <li>
+                  <img src="{{camp.picture.url}}">
+                   <h5>{{camp.name}}</h5>
+                         
+                 </li>
+                 <li>
+
+            <li>
+               {%endif%}
+               {%endfor%}     
+               </ul>
+            </div>
+            <div class="row">
+                <div class="title"><h4><b>My running campaigns</b></h4>
+                    </div>
+                    <ul>
+                        {% for camp in campaign_list %} 
+                        {%if camp.status == 'running' %}
+                        <li>
+                          <img src="{{camp.picture.url}}">
+                           <h5>{{camp.name}}</h5>
+                                 
+                         </li>
+                         <li>
+
+                    <li>
+                       {%endif%}
+                       {%endfor%}     
+                       </ul>
+                     
+            </div>
+        
+        <div class="row">
+            <div class="title"><h4><b>History</b></h4></div>
+            <ul>
+                {% for camp in campaign_list %} 
+                {%if camp.status == 'done' %}
+                <li>
+                  <img src="{{camp.picture.url}}">
+                   <h5>{{camp.name}}</h5>
+                         
+                 </li>
+                 <li>
+
+            <li>
+               {%endif%}
+               {%endfor%}     
+               </ul>
+              
+        </div>
+    </div>
+</div>
+
+          <footer>
+            <div class="card-group">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><b>Contact Us</b></h5>
+                    <p class="card-text">03-5741111 <br>onway@gmail.com</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><b>Help</b></h5>
+                    <p class="card-text">Site Usage Guidelines<br>Terms<br>Technical assistance</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><b>Info</b></h5>
+                    <p class="card-text">Useful information<br>Map of available vehicles<br>Sample campaigns</p>
+                  </div>
+                </div>
+              </div>
+            </footer>
+    </div> 
+</main>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"  
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" 
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

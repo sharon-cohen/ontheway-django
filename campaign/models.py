@@ -1,13 +1,14 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.conf import settings
+from django.db import models
 # Create your models here.
 
 DURATION = (
-    ('One manth', 'One manth'),
-    ('Two manths', 'Two manths'),
-    ('Tree manths', 'Tree manths')
+    ('One week', 'One week'),
+    ('Two weeks', 'Two weeks'),
+    ('one month', 'One month')
 )
 
   
@@ -18,21 +19,22 @@ CATEGORY = (
     ('Home Products', 'Home Products'),
 )
  
-AREAS = (
-     ('Tel-Aviv', 'Tel-Aviv'),
+LOCATION = (
+     ('Tel Aviv Metropolitan Area', 'Tel Aviv Metropolitan Area'),
      ('Jerusalem', 'Jerusalem'),
      ('North', 'North'),
+     ('South','South')
 )
  
-DISPLAY = (
+ROADTYPE = (
     ('High-Way', 'High-Way'),
     ('Urban', 'Urban'),
     ('Inter-Urban-Roads', 'Inter-Urban-Roads'),
 )
-STATUSE = (
-    ('process', 'process'),
-    ('done', 'done'),
-    ('wait', 'wait'),
+AROUND = (
+    ('schools', 'schools'),
+    ('Offices', 'Offices'),
+    ('shopping centers', 'shopping centers'),
 )
 PERCENTׂ = (
    ('10%','10%'),
@@ -47,18 +49,28 @@ PERCENTׂ = (
    ('100%','100%'),
 )
 
-DAY = (
+DAYTIME = (
   ('Morning','Morning'),
   ('Noon','Noon'),
   ('Evening','Evening'),
 )
 
+STATUSE = (
+    ('process', 'process'),
+    ('done', 'done'),
+    ('wait', 'wait'),
+    ('running', 'running')
+)
+
+
 class Campaign(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default=1, related_name='blog_posts')
     name = models.CharField(max_length=200, null=True)
-    duration =models.CharField(max_length=30,choices=DURATION , default='One manth')
+    status =models.CharField(max_length=30,choices=STATUSE, default='wait')
+    duration =models.CharField(max_length=30,choices=DURATION , default='One week')
     category =models.CharField(max_length=30,choices=CATEGORY, default='Food')
-    areas =models.CharField(max_length=10,choices=AREAS , default='Tel-Aviv')
-    status =models.CharField(max_length=20,choices=STATUSE , default='wait')
+    location =models.CharField(max_length=50,choices=LOCATION, default='Tel Aviv Metropolitan Area')
+    around =models.CharField(max_length=50,choices=AROUND, default='shools')
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     url=models.URLField(blank=True)
     picture = models.ImageField(upload_to='campaign/images', default='')
@@ -72,12 +84,15 @@ class Meta:
 class File(models.Model):
     
     name = models.CharField(max_length=200, null=True)
-    display = models.CharField(max_length=20,choices=DISPLAY, default='High-Way')
+    RoadType = models.CharField(max_length=20,choices=ROADTYPE, default='High-Way')
     percent =models.CharField(max_length=20,choices=PERCENTׂ, default='10%')
-    day = models.CharField(max_length=20,choices=DISPLAY, default='Morning')
-    url=models.URLField(blank=True)
+    dayTime = models.CharField(max_length=20,choices=DAYTIME, default='Morning')
+    picture = models.ImageField(upload_to='campaign/images', default='')
     
     def __str__(self):
         return self.name    
+
+
+
 
 

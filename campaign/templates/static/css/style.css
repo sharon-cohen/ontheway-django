@@ -380,3 +380,8 @@ label {
     color: #363636;
     padding: 30px;
 }
+.hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
