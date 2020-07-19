@@ -2,7 +2,7 @@
 
 # from django.http import HttpResponse
 from django.forms import modelformset_factory
-from .models import File, Campaign,profile
+from .models import File, Campaign, Profile
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.http import HttpResponse
@@ -10,15 +10,19 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import  CreateUserForm, CampaignForm, FileForm
+from .forms import  CreateUserForm, CampaignForm, FileForm , UserUpdateForm, ProfileUpdateForm
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 from django.contrib.auth.models import Group
+from .filters import CampFilter
+from django.contrib.contenttypes.models import ContentType
 # Create your views here.
+
 def registerPage(request):
     context = Campaign.objects.all()
+    camp_filter = CampFilter(request.GET, queryset=context)
     if request.user.is_authenticated:
-        return redirect('home')
+        return render(request, 'campaign/index.html',{'campaign_list':context,'filter': camp_filter})
     else:
         form = CreateUserForm(request.POST)
         if request.method == 'POST':
@@ -28,7 +32,7 @@ def registerPage(request):
                 username = form.cleaned_data.get('username')
                 print(username)
 			#Added username after video because of error returning customer name if not added
-                profile.objects.create(
+                Profile.objects.create(
                 user=user,
                 name=user.username,
 				)
@@ -39,7 +43,7 @@ def registerPage(request):
                 messages.success(request, 'Account was created for ' + username)
                 
                 
-                return render(request, 'campaign/index.html',{'campaign_list':context})
+                return render(request, 'campaign/index.html',{'campaign_list':context,'filter': camp_filter})
 			
 
         context = {'form':form}
@@ -47,8 +51,9 @@ def registerPage(request):
 
 def loginPage(request):
     context = Campaign.objects.all()
+    camp_filter = CampFilter(request.GET, queryset=context)
     if request.user.is_authenticated:
-        return redirect('home')
+        return render(request, 'campaign/index.html',{'campaign_list':context,'filter': camp_filter})
     else:
         if request.method == 'POST':
             username = request.POST.get('username')
@@ -58,27 +63,29 @@ def loginPage(request):
 
             if user is not None:
                 login(request, user)
-                return render(request, 'campaign/index.html',{'campaign_list':context})
+                return render(request, 'campaign/index.html',{'campaign_list':context,'filter': camp_filter})
             else:
                 messages.info(request, 'Username OR password is incorrect')
       
         context = Campaign.objects.all()
-        return render(request, 'campaign/login.html',{'campaign_list':context})
+        return render(request, 'campaign/login.html')
 
 
 def home(request):
-    
-    queryset = Campaign.objects.all()
-    return render(request, 'campaign/index.html',{'campaign_list':queryset})
+    camps_list = Campaign.objects.all()
+    camp_filter = CampFilter(request.GET, queryset=camps_list)
+    return render(request, 'campaign/index.html',{'campaign_list':camps_list,'filter': camp_filter})
 
 @method_decorator(login_required, name='dispatch')
 class form(generic.ListView):
     template_name = 'campaign/form.html'
-
+  
     def get(self, request):
-        
+        username=request.user
+        print(username)
         form = CampaignForm()
-        
+        form.initial['user'] = username 
+       
         return render(request, self.template_name,{'form':form})
     def post(self, request):
         
@@ -86,6 +93,7 @@ class form(generic.ListView):
         if request.method =='POST':
            
             if form1.is_valid():
+               
                 instances = form1.save()		
                 instances=request.user
                 instances=form1.save() 
@@ -156,9 +164,43 @@ def updateFiles(request,item_pk):
             return redirect('list')
         except ValueError:
             return render(request, 'campaign/update.html', {'form': FileForm(), 'errMsg': 'Data mismatch'})
+def updateprofil(request,item_pk):
+    camp = get_object_or_404(User, pk=item_pk)
+    if request.method == 'GET':
+        form = FileForm(instance=camp)
+        return render(request, 'campaign/update.html', {'camp': camp, 'form': form})
+    else:
+        try:
+            form = FileForm(request.POST, instance=camp)
+            form.save()
+            return redirect('list')
+        except ValueError:
+            return render(request, 'campaign/update.html', {'form': FileForm(), 'errMsg': 'Data mismatch'})
 
 def delete(request, item_pk):
     camp = get_object_or_404(Campaign, pk=item_pk)
     if request.method == 'POST':
         camp.delete()
         return redirect('list')
+
+def profile(request):
+   
+    objects = Profile.objects.all()
+    for object in objects:
+       
+        if(object.user.username == request.user.username):
+            myobject=object
+           
+        
+    print(myobject.user)
+    if request.method == 'GET':
+        p_form = ProfileUpdateForm(instance=myobject)
+        return render(request, 'campaign/profile.html', {'p_form':p_form})
+    else:
+        try:
+            p_form = ProfileUpdateForm(request.POST,request.FILES,instance=myobject)
+            p_form.save()
+            return redirect('profile')
+        except ValueError:
+            return render(request, 'campaign/profile.html',{'p_form':p_form})
+    

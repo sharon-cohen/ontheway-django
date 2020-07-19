@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('form', views.form.as_view(),name='form'),
     path('list', views.list,name='list'),
+    path('profile', views.profile ,name='profile'),
     path('item/<int:item_pk>', views.item, name='item'),
     path('updateFile/<int:item_pk>', views.updateFiles, name='updateFile'),
     path('update/<int:item_pk>', views.update, name='update'),
