@@ -1,0 +1,108 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>page 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300&family=Righteous&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>      
+     
+    <header>
+        <a href="{% url 'home' %}">
+          <div id="logo"></div>
+       </a>
+        <ul>
+              <li>
+                  <a href="#">
+                  <img src="static/images/Liat.png" alt="Liat Cohen"> 
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-bell"></span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                  </a> 
+              </li>
+              <li>
+                  <a href="{% url 'home' %}">
+                    <span class="glyphicon glyphicon-home"></span>
+                  </a>
+              </li>  
+              </ul>
+
+              <nav class="sidenav">
+                <ul>
+                  
+                  {% if user.is_superuser %}  
+                  <li><a href="{% url 'form' %}"><span class="glyphicon glyphicon-plus"></span></span></a></li>
+                  {%endif%}  
+                  <li><a href="{% url 'list' %}"> <span class="glyphicon glyphicon-th-list"></span></a></li>
+                    <li><a href="#"> <span class="glyphicon glyphicon-signal"></span></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
+                    <li><a  href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                   
+                </ul>
+                
+              </nav>
+
+      </header>
+        <main >
+            <div id="layout-wrapper">
+             
+               {% block title %}
+   
+               {% endblock %}
+  
+              <footer>
+                <div class="card-group">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><b>Contact Us</b></h5>
+                        <p class="card-text">03-5741111 <br>onway@gmail.com</p>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><b>Help</b></h5>
+                        <p class="card-text">Site Usage Guidelines<br>Terms<br>Technical assistance</p>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><b>Info</b></h5>
+                        <p class="card-text">Useful information<br>Map of available vehicles<br>Sample campaigns</p>
+                      </div>
+                    </div>
+                  </div>
+                </footer>
+        </div> 
+    </main>
+    
+    <script src="includes/main.JS"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"  
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" 
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
+    
+      
+   

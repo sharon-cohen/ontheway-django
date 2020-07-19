@@ -1,0 +1,17 @@
+{% extends "article/header.html" %}
+{% block title %}
+       
+    <h1>Update Todo {{ camp.title }}</h1>
+    <br><br>
+    <h3>{{ errMsg }}</h3>
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">UPDATE CAMP</button>
+    </form>
+    <form action="{% url 'delete' camp.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Delete Task</button>
+    </form>
+{% endblock %}
