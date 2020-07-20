@@ -1,0 +1,99 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300&family=Righteous&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="{% static 'script/getAllMessages.JS' %}"></script>
+    <title>messages</title>
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}">
+          <div id="logo"></div>
+       </a>
+        <ul>
+              <li>
+                  <a href="{% url 'profile' %}">
+                  <img src="{{myprofile.picture.url}}" alt="Liat Cohen"> 
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-bell"></span>
+                  </a>
+              </li>
+              <li>
+                  <a href=" {% url 'messages' %}">
+                    <span class="glyphicon glyphicon-envelope" style="color: gray;"></span>
+                  </a> 
+              </li>
+              <li>
+                  <a href="{% url 'home' %}">
+                    <span class="glyphicon glyphicon-home"></span>
+                  </a>
+              </li>  
+              </ul>
+
+              <nav class="sidenav">
+                <ul>
+                  
+                  {% if user.is_superuser %}  
+                  <li><a href="{% url 'form' %}"><span class="glyphicon glyphicon-plus"></span></span></a></li>
+                  {%endif%}  
+                  <li><a href="{% url 'list' %}"> <span class="glyphicon glyphicon-th-list"></span></a></li>
+                    <li><a href="#"> <span class="glyphicon glyphicon-signal"></span></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
+                    <li><a  href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                   
+                </ul>
+                
+              </nav>
+
+      </header>
+    <div id="messages">
+        <h1 id="All"></h1>
+    </div>
+    <main >
+        <div id="layout-wrapper">
+         
+           {% block title %}
+
+           {% endblock %}
+
+          <footer>
+            <div class="card-group">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><b>Contact Us</b></h5>
+                    <p class="card-text">03-5741111 <br>onway@gmail.com</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><b>Help</b></h5>
+                    <p class="card-text">Site Usage Guidelines<br>Terms<br>Technical assistance</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><b>Info</b></h5>
+                    <p class="card-text">Useful information<br>Map of available vehicles<br>Sample campaigns</p>
+                  </div>
+                </div>
+              </div>
+            </footer>
+    </div> 
+
+</body>
+</html>

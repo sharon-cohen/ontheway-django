@@ -15,4 +15,6 @@ urlpatterns = [
     path('updateFile/<int:item_pk>', views.updateFiles, name='updateFile'),
     path('update/<int:item_pk>', views.update, name='update'),
     path('item/<int:item_pk>/delete', views.delete, name='delete'),
+    path('item/<int:item_pk>/deletefile', views.deletefile, name='deletefile'),
+    path('messages', views.messagesPage, name='messages'),
 ]

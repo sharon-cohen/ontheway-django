@@ -1,12 +1,23 @@
 
 {% extends "article/header.html" %}
+{% block home %}
+<a href="{% url 'home' %}">
+  <span class="glyphicon glyphicon-home"></span>
+</a>
+{% endblock %}
+{% block btn %}
+{% if user.is_superuser %}  
+<li><a href="{% url 'form' %}"><span class="glyphicon glyphicon-plus"></span></a></li>
+{%endif%}  
+<li><a href="{% url 'list' %}"> <span class="glyphicon glyphicon-th-list" style="color: gray;"></span></a></li>
+  
+  {% endblock %}
 {% block title %}
        
-                <div class="center"> 
+
+                <div class="up"> 
                   <img src="{{object.picture.url}}">
-                </div>
-                 <div class="video"><img src="static/images/video.png" alt=""></div>
-              
+                </div>            
                 
                   <div class="panel-group">
                     <div class="panel panel-default">
@@ -24,8 +35,8 @@
                         <p>{{object.around}}</p>
                         <div class="editAndDelete"> 
                           <div class="center"> 
-                            {%if object.user == user%}
-                            <a href="/update/{{object.id}}"> <img src="/static/images/edit.png" alt=""></a>
+                            {%if object.user == request.user%}
+                            <a href="/update/{{object.id}}"> <img src="/static/images/edit.jpg" alt=""></a>
                             {%endif%}
                           </div>
                         </div>
@@ -49,7 +60,7 @@
                         <div class="editAndDelete"> 
                           <div class="center"> 
                             {%if object.user == user%}
-                            <a href="/updateFile/{{file.id}}"> <img src="/static/images/edit.png" alt=""></a>
+                            <a href="/updateFile/{{file.id}}"> <img src="/static/images/edit.jpg" alt=""></a>
                             {%endif%}
                           </div>
                         </div>

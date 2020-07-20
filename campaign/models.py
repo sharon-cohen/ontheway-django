@@ -95,7 +95,6 @@ class File(models.Model):
     name = models.CharField(max_length=200, null=True)
     RoadType = models.CharField(max_length=20,choices=ROADTYPE, default='High-Way')
     percent =models.CharField(max_length=20,choices=PERCENTׂ, default='10%')
-    num_file=models.IntegerField(choices=FILE , default=1)
     dayTime = models.CharField(max_length=20,choices=DAYTIME, default='Morning')
     picture = models.ImageField(upload_to='campaign/images', default='')
     
@@ -108,7 +107,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
-    picture = models.ImageField(upload_to='campaign/images', default='')
+    picture = models.ImageField(upload_to='campaign/images', default='campaign\images\profile.png')
     company= models.CharField(max_length=200, null=True)
     role=models.CharField(max_length=200, null=True)
 	

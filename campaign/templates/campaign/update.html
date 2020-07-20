@@ -1,13 +1,27 @@
 {% extends "article/header.html" %}
+{% load crispy_forms_tags %}
+{% block home %}
+
+<a href="{% url 'home' %}">
+  <span class="glyphicon glyphicon-home"></span>
+</a>
+{% endblock %}
+{% block btn %}
+{% if user.is_superuser %}  
+<li><a href="{% url 'form' %}"><span class="glyphicon glyphicon-plus"></span></a></li>
+{%endif%}  
+<li><a href="{% url 'list' %}"> <span class="glyphicon glyphicon-th-list" style="color: gray;"></span></a></li>
+  
+  {% endblock %}
 {% block title %}
        
-    <h1>Update Todo {{ camp.title }}</h1>
-    <br><br>
+    <h1>Update campaign {{ camp.title }}</h1>
+    
     <h3>{{ errMsg }}</h3>
 
     <form action="#" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button type="submit">UPDATE CAMP</button>
     </form>
     <form action="{% url 'delete' camp.id %}" method="POST">

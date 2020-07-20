@@ -16,7 +16,7 @@ class CampaignForm(forms.ModelForm):
 class FileForm(ModelForm):
     class Meta:
         model = File
-        fields = ['num_file','name','RoadType','percent', 'dayTime','picture']
+        fields = ['name','RoadType','percent', 'dayTime','picture']
 
 class UserUpdateForm(forms.ModelForm):
     class Meta:

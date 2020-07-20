@@ -1,24 +1,28 @@
 {% extends "article/header.html" %}
+{% block home %}
+<a href="{% url 'home' %}">
+  <span class="glyphicon glyphicon-home"></span>
+</a>
+{% endblock %}
+{% block btn %}
+{% if user.is_superuser %}  
+<li><a href="{% url 'form' %}"><span class="glyphicon glyphicon-plus" style="color: gray;"></span></a></li>
+{%endif%}  
+<li><a href="{% url 'list' %}"> <span class="glyphicon glyphicon-th-list"></span></a></li>
+  {% endblock %}
 {% block title %}
           {% load crispy_forms_tags %}
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-8">
-                <h1 class="mt-2">Create your new campaign</h1>
+                <h3><b>Create your new campaign</b></h3>
                 <hr class="mt-0 mb-4">
-
-                <form method="post" enctype='multipart/form-data'>
-                  {% if form %}
-                  {% csrf_token %}
-                  {{ form|crispy }}
-                  <input type="submit" value="save" >
-                  {%endif%}
-                  {% if forms %}
                   <form method="post" enctype='multipart/form-data'>
                     {% csrf_token %}
-                   
                     {{forms|crispy}}
-              
                     <input type ="submit" value="save">
-                 {%endif%}
-  {% endblock %}
+                     </form> 
+              </div>
+            </div>
+          </div>
+                     {% endblock %}

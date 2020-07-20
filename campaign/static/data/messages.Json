@@ -1,0 +1,25 @@
+{
+    "title":"Messages",
+    "messages": [
+        {
+            "ID":1,
+            "sender":"Ron Shalom",
+            "Date":"15.06.2020",
+            "content":"Hi Liat, Continuing our conversation, we'll be happy to add our new promotions to the McDonalds campaign."
+        },
+
+        {
+            "ID":2,
+            "sender":"Yaniv Levi",
+            "Date":"05.07.2020",
+            "content":"Hello Liat, I am updating you that I have uploaded the H&M campaign to the database. I'd be glad to hear your opinion."
+        },
+
+        {
+            "ID":3,
+            "sender":"Roni Glik",
+            "Date":"12.07.2020",
+            "content":"Hi Liat, I've updated you that Apple's campaign went off the screens this morning."
+        }
+    ]
+}

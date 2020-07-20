@@ -1,14 +1,27 @@
 {% extends "article/header.html" %}
-{% block title %}
+{% block home %}
+<a href="{% url 'home' %}">
+  <span class="glyphicon glyphicon-home"></span>
+</a>
+{% endblock %}
+{% block btn %}
+{% if user.is_superuser %}  
+<li><a href="{% url 'form' %}"><span class="glyphicon glyphicon-plus"></span></a></li>
+{%endif%}  
+<li><a href="{% url 'list' %}"> <span class="glyphicon glyphicon-th-list" style="color: gray;"></span></a></li>
+  
+  {% endblock %}
+
+  {% block title %}
         <h3><b>My campaigns</b></h3>
         <div class="container">
             <div class="row">
                 <div class="title"><h4><b>Waiting for approval</b></h4></div>
                 <ul>
                     {% for camp in camps %} 
-                    {%if camp.status == 'Waiting' %}
+                    {%if camp.status == 'wait' %}
                     <li>
-                      <img src="{{camp.picture.url}}">
+                        <a href="/item/{{camp.id}}"> <img src="{{camp.picture.url}}" alt=""></a>
                        <h5>{{camp.name}}</h5>
                              
                      </li>
@@ -80,6 +93,6 @@
               
         </div>
     </div>
-</div>
+
 
 {% endblock %}
