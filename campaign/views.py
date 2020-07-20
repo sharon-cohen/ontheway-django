@@ -75,7 +75,7 @@ def loginPage(request):
         context = Campaign.objects.all()
         return render(request, 'campaign/login.html')
 
-
+@login_required(login_url='login')
 def home(request):
     objects = Profile.objects.all()
     for object in objects:
